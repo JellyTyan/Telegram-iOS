@@ -309,7 +309,7 @@ public struct NavigationBarBackButton: View {
     public var body: some View {
         Button(action: action) {
             HStack(spacing: 6) {
-                if let customBackArrow = NavigationBar.backArrowImage(color: color.uiColor()) {
+                if let customBackArrow = navigationBarBackArrowImage(color: color.uiColor()) {
                     Image(uiImage: customBackArrow)
                 } else {
                     Image(systemName: "chevron.left")

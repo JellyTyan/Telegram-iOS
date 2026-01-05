@@ -211,8 +211,6 @@ final class TabBarControllerNode: ASDisplayNode {
         if tabBarBottomInset <= 28.0 {
             sideInset = 20.0
         }
-        // TODO(swiftgram): Customize bottominset with SGTabBarHeightModifier
-        let sideInset: CGFloat = 20.0
         
         var selectedId: AnyHashable?
         if self.selectedIndex < self.tabBarItems.count {

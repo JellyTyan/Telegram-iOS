@@ -6,7 +6,6 @@ sgdeps = [
     "//Swiftgram/SGAPIToken:SGAPIToken"
 ]
 sgsrcs = [
-    "//Swiftgram/AppleStyleFolders:AppleStyleFolders"
 ]
 
 swift_library(

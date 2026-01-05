@@ -1778,6 +1778,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
         }
         
         var needsShareButton = false
+        var mayHaveSeparateCommentsButton = false // MARK: Swiftgram
         var needsSummarizeButton = false
     
         if incoming, case let .customChatContents(contents) = item.associatedData.subject, case .hashTagSearch = contents.kind {

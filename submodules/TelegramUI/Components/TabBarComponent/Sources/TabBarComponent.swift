@@ -564,8 +564,14 @@ public final class TabBarComponent: Component {
             
             self.overrideUserInterfaceStyle = component.theme.overallDarkAppearance ? .dark : .light
 
-            var itemSize = CGSize(width: floor((availableSize.width - innerInset * 2.0) / CGFloat(component.items.count)), height: SGSimpleSettings.shared.showTabNames ? 56.0 : 40.0)
-            if !SGSimpleSettings.shared.wideTabBar { itemSize.width = min(94.0, itemSize.width) }
+            let barHeight: CGFloat = (SGSimpleSettings.shared.showTabNames ? 56.0 : 40.0) + innerInset * 2.0
+
+            var availableItemsWidth: CGFloat = availableSize.width - innerInset * 2.0
+            if component.search != nil {
+                availableItemsWidth -= barHeight + 8.0
+            }
+
+            let itemSize = CGSize(width: floor(availableItemsWidth / CGFloat(component.items.count)), height: SGSimpleSettings.shared.showTabNames ? 56.0 : 40.0)
             let contentWidth: CGFloat = innerInset * 2.0 + CGFloat(component.items.count) * itemSize.width
             let tabsSize = CGSize(width: min(availableSize.width, contentWidth), height: itemSize.height + innerInset * 2.0)
 

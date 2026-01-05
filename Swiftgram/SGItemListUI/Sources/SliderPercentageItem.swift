@@ -113,7 +113,7 @@ class SliderPercentageItemNode: ListViewItemNode {
         // MARK: Swiftgram
         self.activateArea = AccessibilityAreaNode()
         
-        super.init(layerBacked: false, dynamicBounce: false)
+        super.init(layerBacked: false)
         
         self.addSubnode(self.leftTextNode)
         self.addSubnode(self.rightTextNode)

@@ -1085,7 +1085,6 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
     
     // MARK: Swiftgram
     let inlineTabContainerNode: ChatListFilterTabContainerNode
-    let appleStyleTabContainerNode: AppleStyleFoldersNode
     
     let mainContainerNode: ChatListContainerNode
     
@@ -1169,9 +1168,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
             openArchiveSettings?()
         })
         
-        // MARK: Swiftgram
         self.inlineTabContainerNode = ChatListFilterTabContainerNode(inline: true, context: context)
-        self.appleStyleTabContainerNode = AppleStyleFoldersNode(context: context)
         
         self.controller = controller
         
@@ -1185,9 +1182,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
         
         self.addSubnode(self.mainContainerNode)
         
-        // MARK: Swiftgram
         self.addSubnode(self.inlineTabContainerNode)
-        self.addSubnode(self.appleStyleTabContainerNode)
         
         self.mainContainerNode.contentOffsetChanged = { [weak self] offset, listView in
             self?.contentOffsetChanged(offset: offset, listView: listView, isPrimary: true)
@@ -1863,7 +1858,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
         // MARK: Swiftgram
         if !self.inlineTabContainerNode.isHidden {
             mainInsets.bottom += 46.0
-        } else if !self.appleStyleTabContainerNode.isHidden { mainInsets.bottom += 50.0 }
+        }
         self.mainContainerNode.update(layout: layout, navigationBarHeight: mainNavigationBarHeight, visualNavigationHeight: visualNavigationHeight, originalNavigationHeight: navigationBarHeight, cleanNavigationBarHeight: cleanMainNavigationBarHeight, insets: mainInsets, isReorderingFilters: self.isReorderingFilters, isEditing: self.isEditing, inlineNavigationLocation: self.inlineStackContainerNode?.location, inlineNavigationTransitionFraction: self.inlineStackContainerTransitionFraction, storiesInset: storiesInset, transition: transition)
         
         if let inlineStackContainerNode = self.inlineStackContainerNode {
@@ -1900,15 +1895,14 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
         // MARK: Swiftgram
         transition.updateFrame(node: self.inlineTabContainerNode, frame: CGRect(origin: CGPoint(x: 0.0, y: layout.size.height - layout.intrinsicInsets.bottom - 46.0), size: CGSize(width: layout.size.width, height: 46.0)))
 //        print("Updating frame. Layout size: \(layout.size), intrinsicInsets.bottom: \(layout.intrinsicInsets.bottom)")
-        let maxBottomInsetFallback: CGFloat
-        if SGSimpleSettings.shared.hideTabBar {
-            maxBottomInsetFallback = 48.0
-        } else if !SGSimpleSettings.shared.showTabNames {
-            maxBottomInsetFallback = 83.0
-        } else {
-            maxBottomInsetFallback = 96.0
-        }
-        transition.updateFrame(node: self.appleStyleTabContainerNode, frame: CGRect(origin: CGPoint(x: 0.0, y: layout.size.height - max(layout.intrinsicInsets.bottom, maxBottomInsetFallback) - 8.0 - 40.0), size: CGSize(width: layout.size.width, height: 40.0)))
+//        let maxBottomInsetFallback: CGFloat
+//        if SGSimpleSettings.shared.hideTabBar {
+//            maxBottomInsetFallback = 48.0
+//        } else if !SGSimpleSettings.shared.showTabNames {
+//            maxBottomInsetFallback = 83.0
+//        } else {
+//            maxBottomInsetFallback = 96.0
+//        }
         self.tapRecognizer?.isEnabled = self.isReorderingFilters
         
         if let searchDisplayController = self.searchDisplayController {
