@@ -556,7 +556,8 @@ public final class TabBarComponent: Component {
             let _ = alphaTransition
 
             let innerInset: CGFloat = 4.0
-            let availableSize = CGSize(width: min(500.0, availableSize.width), height: availableSize.height)
+            var availableSize = CGSize(width: min(500.0, availableSize.width), height: availableSize.height)
+            if !(SGSimpleSettings.shared.wideTabBar || component.search?.isActive ?? false) { availableSize.width = availableSize.width / 1.5 }
             
             let previousComponent = self.component
             self.component = component
