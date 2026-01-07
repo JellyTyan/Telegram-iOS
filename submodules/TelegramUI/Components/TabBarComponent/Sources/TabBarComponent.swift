@@ -557,7 +557,23 @@ public final class TabBarComponent: Component {
 
             let innerInset: CGFloat = 4.0
             var availableSize = CGSize(width: min(500.0, availableSize.width), height: availableSize.height)
-            if !(SGSimpleSettings.shared.wideTabBar || component.search?.isActive ?? false) { availableSize.width = availableSize.width / 1.5 }
+            if !(SGSimpleSettings.shared.wideTabBar || component.search?.isActive ?? false) { 
+                let widthReducer: CGFloat
+
+                switch component.items.count {
+                case 1:
+                    widthReducer = 1.75
+                case 2:
+                    widthReducer = 1.5
+                case 3:
+                    widthReducer = 1.25
+                case 4:
+                    widthReducer = 1.0
+                default:
+                    widthReducer = 1.0
+                }
+                availableSize.width = availableSize.width / widthReducer
+            }
             
             let previousComponent = self.component
             self.component = component
