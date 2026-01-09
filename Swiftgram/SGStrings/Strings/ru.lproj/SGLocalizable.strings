@@ -4,6 +4,7 @@
 "Settings.Tabs.HideTabBar" = "Скрыть панель вкладок";
 "Settings.Tabs.ShowContacts" = "Вкладка «Контакты»";
 "Settings.Tabs.ShowNames" = "Имена вкладок";
+"Settings.Tabs.SearchButton" = "Кнопка поиска";
 "Settings.Tabs.WideTabBar" = "Широкая панель";
 "Settings.Tabs.WideTabBar.Notice" = "Сохраняет полную ширину панели вкладок, когда некоторые вкладки скрыты.";
 

@@ -41,6 +41,7 @@ public class SGSimpleSettings {
 
         let tasks = [
 //            { let _ = self.allChatsFolderPositionOverride },
+            { let _ = self.tabBarSearchEnabled },
             { let _ = self.allChatsHidden },
             { let _ = self.hideTabBar },
             { let _ = self.bottomTabStyle },
@@ -155,6 +156,7 @@ public class SGSimpleSettings {
         case canUseNY
         case nyStyle
         case wideTabBar
+        case tabBarSearchEnabled
     }
     
     public enum DownloadSpeedBoostValues: String, CaseIterable {
@@ -294,6 +296,7 @@ public class SGSimpleSettings {
         Keys.canUseNY.rawValue: false,
         Keys.nyStyle.rawValue: NYStyle.default.rawValue,
         Keys.wideTabBar.rawValue: false,
+        Keys.tabBarSearchEnabled.rawValue: true
     ]
     
     public static let groupDefaultValues: [String: Any] = [
@@ -539,6 +542,9 @@ public class SGSimpleSettings {
 
     @UserDefault(key: Keys.wideTabBar.rawValue)
     public var wideTabBar: Bool
+    
+    @UserDefault(key: Keys.tabBarSearchEnabled.rawValue)
+    public var tabBarSearchEnabled: Bool
 }
 
 extension SGSimpleSettings {

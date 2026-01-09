@@ -251,7 +251,7 @@ final class TabBarControllerNode: ASDisplayNode {
                         }
                     )
                 },
-                search: self.currentController?.tabBarSearchState.flatMap { tabBarSearchState in
+                search: (!SGSimpleSettings.shared.tabBarSearchEnabled) ? nil : self.currentController?.tabBarSearchState.flatMap { tabBarSearchState in
                     return TabBarComponent.Search(
                         isActive: tabBarSearchState.isActive,
                         activate: { [weak self] in
