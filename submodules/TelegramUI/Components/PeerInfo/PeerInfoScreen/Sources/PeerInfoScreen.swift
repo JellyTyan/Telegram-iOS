@@ -2033,7 +2033,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
                 
                 if case .broadcast = channel.info {
                     var canEditMembers = false
-                    if channel.hasPermission(.banMembers) {
+                    if channel.adminRights != nil || channel.flags.contains(.isCreator) {
                         canEditMembers = true
                     }
                     if canEditMembers {
@@ -2722,7 +2722,7 @@ private func editingItems(data: PeerInfoScreenData?, boostStatus: ChannelBoostSt
                 }
                 
                 var canEditMembers = false
-                if channel.hasPermission(.banMembers) && (channel.adminRights != nil || channel.flags.contains(.isCreator)) {
+                if channel.adminRights != nil || channel.flags.contains(.isCreator) {
                     canEditMembers = true
                 }
                 if canEditMembers {
